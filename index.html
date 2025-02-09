@@ -41,12 +41,15 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            height: auto;
             margin: 0;
             padding: 20px;
-            box-sizing: border-box;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             text-align: center;
+            box-sizing: border-box;
+            /* Prevent content from being cut off */
+            overflow-x: hidden;
+            /* Ensure smooth scrolling if needed */
+            -webkit-overflow-scrolling: touch;
         }
         h1 {
             color: #333;
