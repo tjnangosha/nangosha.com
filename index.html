@@ -32,6 +32,7 @@
     <title>Home | nangosha.com</title>
     <meta name="nangosha.com" content="The personal site of Trevor James Nangosha">
     <link rel="icon" href="https://app-cdn.logo.com/assets/icons/icon_fUASTiaC1FQs796A64.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <style>
         body {
@@ -71,6 +72,12 @@
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
         }
+        #quote {
+            font-size: 1rem;
+            font-style: italic;
+            color: #888;
+            margin-bottom: 2rem;
+        }
         .social-links {
             display: flex;
             justify-content: center;
@@ -90,6 +97,9 @@
         .social-links .insta-icon:hover {
             color: #E1306C;
         }
+        .social-links .arxiv-icon:hover {
+            color: #b31b1b;
+        }
         @media (max-width: 600px) {
             h1 {
                 font-size: 2rem;
@@ -106,11 +116,13 @@
 <body>
     <h1>Hello, &#x1F44B;</h1>
     <p>My name is Trevor and I build stuff with computers!</p>
+    <span id="quote"></span>
     <div class="social-links">
         <a class="gh-icon" href="https://github.com/tjnangosha" target="_blank" aria-label="Github"><i class="fab fa-github"></i></a>
         <a class="twitter-icon" href="https://x.com/TJNangosha" target="_blank" aria-label="Twitter"><?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" width="20px" height="20px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><path d="M14.095479,10.316482L22.286354,1h-1.940718l-7.115352,8.087682L7.551414,1H1l8.589488,12.231093L1,23h1.940717  l7.509372-8.542861L16.448587,23H23L14.095479,10.316482z M11.436522,13.338465l-0.871624-1.218704l-6.924311-9.68815h2.981339  l5.58978,7.82155l0.867949,1.218704l7.26506,10.166271h-2.981339L11.436522,13.338465z"/></svg></a>
         <a class="insta-icon" href="https://www.instagram.com/tjnangosha/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a class="linkedin-icon" href="https://linkedin.com/in/trevor-james-nangosha-983572214/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a class="arxiv-icon" href="https://arxiv.org/a/nangosha_t_1.html" target="_blank" aria-label="arXiv"><i class="ai ai-arxiv ai-1x"></i></a>
     </div>
     <p class="copyright">&copy; 2024 nangosha.com All rights reserved.</p>
     <footer>
@@ -120,6 +132,19 @@
     </footer>
     <script>
         document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} nangosha.com | All rights reserved.`;
+        const quotesOfTheDay = [
+            "Before there was, I was.",
+        ];
+        
+        // Display a random quote
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotesOfTheDay.length);
+            const quoteElement = document.getElementById('quote');
+            quoteElement.textContent = `"${quotesOfTheDay[randomIndex]}"`;
+        }
+        
+        // Display quote when page loads
+        displayRandomQuote();
     </script>
 </body>
 </html>
