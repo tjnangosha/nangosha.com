@@ -33,10 +33,43 @@
     <meta name="nangosha.com" content="The personal site of Trevor James Nangosha">
     <link rel="icon" href="https://app-cdn.logo.com/assets/icons/icon_fUASTiaC1FQs796A64.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            /* Light mode colors */
+            --bg-primary: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --text-primary: #333;
+            --text-secondary: #666;
+            --text-tertiary: #888;
+            --social-hover-github: #171515;
+            --social-hover-linkedin: #0077B5;
+            --social-hover-instagram: #E1306C;
+            --social-hover-arxiv: #b31b1b;
+            --toggle-bg: #333;
+            --toggle-text: #fff;
+        }
+
+        [data-theme="dark"] {
+            /* Dark mode colors */
+            --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --text-primary: #e0e6ed;
+            --text-secondary: #a0a6ad;
+            --text-tertiary: #8a8a8a;
+            --social-hover-github: #6e5494;
+            --social-hover-linkedin: #0077B5;
+            --social-hover-instagram: #E1306C;
+            --social-hover-arxiv: #ff6b6b;
+            --toggle-bg: #e0e6ed;
+            --toggle-text: #1a1a2e;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'JetBrains Mono', monospace;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -50,12 +83,37 @@
             overflow-x: hidden;
             /* Ensure smooth scrolling if needed */
             -webkit-overflow-scrolling: touch;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--bg-primary);
+            transition: background 0.3s ease, color 0.3s ease;
         }
         h1 {
-            color: #333;
+            color: var(--text-primary);
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--toggle-bg);
+            color: var(--toggle-text);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
         }
         footer {
             display: flex;
@@ -68,15 +126,17 @@
             padding: 1rem;
         }
         p {
-            color: #666;
+            color: var(--text-secondary);
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
+            transition: color 0.3s ease;
         }
         #quote {
             font-size: 1rem;
             font-style: italic;
-            color: #888;
+            color: var(--text-tertiary);
             margin-bottom: 2rem;
+            transition: color 0.3s ease;
         }
         .social-links {
             display: flex;
@@ -84,21 +144,21 @@
             gap: 1rem;
         }
         .social-links a {
-            color: #333;
+            color: var(--text-primary);
             font-size: 1.5rem;
             transition: color 0.3s ease;
         }
         .social-links .gh-icon:hover {
-            color: #171515;
+            color: var(--social-hover-github);
         }       
         .social-links .linkedin-icon:hover {
-            color: #0077B5;
+            color: var(--social-hover-linkedin);
         }
         .social-links .insta-icon:hover {
-            color: #E1306C;
+            color: var(--social-hover-instagram);
         }
         .social-links .arxiv-icon:hover {
-            color: #b31b1b;
+            color: var(--social-hover-arxiv);
         }
         @media (max-width: 600px) {
             h1 {
@@ -110,16 +170,26 @@
             .social-links a {
                 font-size: 1.2rem;
             }
+            .dark-mode-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+                top: 15px;
+                right: 15px;
+            }
         }
     </style>
 </head>
 <body>
+    <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="toggle-icon">🌙</span>
+    </button>
     <h1>Hello, &#x1F44B;</h1>
     <p>My name is Trevor and I build stuff with computers!</p>
     <span id="quote"></span>
     <div class="social-links">
         <a class="gh-icon" href="https://github.com/tjnangosha" target="_blank" aria-label="Github"><i class="fab fa-github"></i></a>
-        <a class="twitter-icon" href="https://x.com/TJNangosha" target="_blank" aria-label="Twitter"><?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" width="20px" height="20px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><path d="M14.095479,10.316482L22.286354,1h-1.940718l-7.115352,8.087682L7.551414,1H1l8.589488,12.231093L1,23h1.940717  l7.509372-8.542861L16.448587,23H23L14.095479,10.316482z M11.436522,13.338465l-0.871624-1.218704l-6.924311-9.68815h2.981339  l5.58978,7.82155l0.867949,1.218704l7.26506,10.166271h-2.981339L11.436522,13.338465z"/></svg></a>
+        <a class="twitter-icon" href="https://x.com/TJNangosha" target="_blank" aria-label="Twitter"><?xml version="1.0" ?><i class="fa-brands fa-x-twitter"></i></a>
         <a class="insta-icon" href="https://www.instagram.com/tjnangosha/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a class="linkedin-icon" href="https://linkedin.com/in/trevor-james-nangosha-983572214/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a class="arxiv-icon" href="https://arxiv.org/a/nangosha_t_1.html" target="_blank" aria-label="arXiv"><i class="ai ai-arxiv ai-1x"></i></a>
@@ -131,9 +201,58 @@
         </a>
     </footer>
     <script>
+        // Dark mode functionality
+        const darkModeToggle = document.querySelector('.dark-mode-toggle');
+        const toggleIcon = document.querySelector('.toggle-icon');
+        const body = document.body;
+
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Set initial theme
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            updateToggleIcon(savedTheme);
+        } else if (systemPrefersDark) {
+            body.setAttribute('data-theme', 'dark');
+            updateToggleIcon('dark');
+        } else {
+            body.setAttribute('data-theme', 'light');
+            updateToggleIcon('light');
+        }
+
+        // Toggle theme function
+        function toggleTheme() {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        }
+
+        // Update toggle icon
+        function updateToggleIcon(theme) {
+            toggleIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Add event listener
+        darkModeToggle.addEventListener('click', toggleTheme);
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                body.setAttribute('data-theme', newTheme);
+                updateToggleIcon(newTheme);
+            }
+        });
+
+        // Existing code for copyright and quotes
         document.querySelector('.copyright').textContent = `© ${new Date().getFullYear()} nangosha.com | All rights reserved.`;
         const quotesOfTheDay = [
-            "Before there was, I was.", "You can't teach this hunger", "What the fuck is water?"
+            "Before there was, I was.", "You can't teach this hunger", "What the hell is water?🐟🐟"
         ];
         
         // Display a random quote
